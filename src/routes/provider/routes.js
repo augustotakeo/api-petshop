@@ -4,6 +4,8 @@ const ProviderTable = require('./ProviderTable');
 
 const ProviderSerializer = require('../../Serializer').ProviderSerializer;
 
+const products = require("./products/routes");
+
 routes.get("/providers", async (req, res) => {
     const results = await ProviderTable.list();
     const serializer = new ProviderSerializer(res.getHeader("Content-Type"));
@@ -59,5 +61,19 @@ routes.delete("/providers/:id", async (req, res, next) => {
         next(error);
     }
 })
+
+const verifyProvider = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const provider = new Provider({ id });
+        await provider.searchById(id);
+        req.provider = provider;
+        next();
+    } catch(error) {
+        next(error);
+    }
+}
+
+routes.use("/providers/:id", verifyProvider, products);
 
 module.exports = routes;
