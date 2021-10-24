@@ -1,6 +1,6 @@
 class NotFound extends Error {
-    constructor() {
-        super("Resource not found.");
+    constructor(resource) {
+        super(`${resource.toUpperCase()} not found.`);
         this.name = "Not Found";
         this.id = 1;
     }
