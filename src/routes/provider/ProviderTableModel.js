@@ -19,7 +19,8 @@ const conlumns = {
 const options = {
     freezeTableName: true,
     tableName: "providers",
-    timestamps: true
+    timestamps: true,
+    version: true
 }
 
 module.exports = sequelize.define("provider", conlumns, options);

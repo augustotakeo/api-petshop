@@ -34,7 +34,8 @@ const columns = {
 const options = {
     freezeTableName: true,
     tableName: "products",
-    timestamps: true
+    timestamps: true,
+    version: true
 }
 
 module.exports = sequelize.define("products", columns, options);
