@@ -64,7 +64,7 @@ routes.delete("/providers/:id", async (req, res, next) => {
 
 const verifyProvider = async (req, res, next) => {
     try {
-        const id = req.params.id;
+        const id = req.params.idProvider;
         const provider = new Provider({ id });
         await provider.searchById(id);
         req.provider = provider;
@@ -74,6 +74,6 @@ const verifyProvider = async (req, res, next) => {
     }
 }
 
-routes.use("/providers/:id", verifyProvider, products);
+routes.use("/providers/:idProvider", verifyProvider, products);
 
 module.exports = routes;
