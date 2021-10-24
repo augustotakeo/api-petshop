@@ -16,7 +16,7 @@ module.exports = {
         });
 
         if( !provider ){
-            throw new NotFound();
+            throw new NotFound("provider");
         }
 
         return provider;
